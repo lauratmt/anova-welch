@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "index.html#o-que-a-anova-clássica-testa",
+    "href": "index.html#o-que-a-anova-clássica-testa",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "O que a ANOVA Clássica Testa?",
+    "text": "O que a ANOVA Clássica Testa?\n\n\n\n\n\n\n\nObjetivo\n\n\nVerificar se as médias populacionais de k grupos são iguais. \\[\nH_0:\\mu_1=\\mu_2=\\cdots=\\mu_k\n\\] \\[\nH_1:\\text{Pelo menos uma média difere}\n\\]"
+  },
+  {
+    "objectID": "index.html#estatística-de-teste-da-anova",
+    "href": "index.html#estatística-de-teste-da-anova",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Estatística de Teste da ANOVA",
+    "text": "Estatística de Teste da ANOVA\n\n\n\n\n\n\n\nEstatística F\n\n\n\\[\nF=\n\\frac{QM_{Entre}}{QM_{Dentro}}\n\\]"
+  },
+  {
+    "objectID": "index.html#suposições-da-anova-clássica",
+    "href": "index.html#suposições-da-anova-clássica",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Suposições da ANOVA Clássica",
+    "text": "Suposições da ANOVA Clássica\n\n\n\n\n\n\n\nHipóteses do Modelo\n\n\n\nIndependência das observações\n\nNormalidade dos resíduos\n\nHomogeneidade de variâncias \\[\n\\sigma_1^2=\\sigma_2^2=\\cdots=\\sigma_k^2\n\\]"
+  },
+  {
+    "objectID": "index.html#onde-a-homogeneidade-é-utilizada",
+    "href": "index.html#onde-a-homogeneidade-é-utilizada",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Onde a Homogeneidade é Utilizada?",
+    "text": "Onde a Homogeneidade é Utilizada?\n\n\n\n\n\n\n\nVariância Residual Pooled\n\n\nA ANOVA clássica estima uma variância residual comum:\n\\[\ns_p^2 = QM_{Dentro}\n\\] Esse estimador só é válido se as variâncias populacionais forem iguais."
+  },
+  {
+    "objectID": "index.html#problema-da-heterogeneidade",
+    "href": "index.html#problema-da-heterogeneidade",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Problema da Heterogeneidade",
+    "text": "Problema da Heterogeneidade\n\n\n\n\n\n\n\nQuando as variâncias diferem\n\n\nSe:\n\\[\n\\sigma_i^2 \\neq \\sigma_j^2\n\\]\no denominador do teste F deixa de estimar corretamente a variância residual.\n\n\n\n\n\n\n\n\n\n\n\nConsequências\n\n\n\nPode inflar ou reduzir o erro tipo I\n\nProblema piora com tamanhos amostrais desbalanceados"
+  },
+  {
+    "objectID": "index.html#teste-de-tukey",
+    "href": "index.html#teste-de-tukey",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Teste de Tukey",
+    "text": "Teste de Tukey\n\n\n\n\n\n\n\nComparações Múltiplas\n\n\nUtilizado após ANOVA significativa para comparar pares de médias. \\[\nq=\n\\frac{\n|\\bar X_i-\\bar X_j|\n}{\n\\sqrt{\nQM_{Dentro}\n\\left(\n\\frac1{n_i}+\\frac1{n_j}\n\\right)/2\n}\n}\n\\]"
+  },
+  {
+    "objectID": "index.html#o-que-muda",
+    "href": "index.html#o-que-muda",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "O que muda?",
+    "text": "O que muda?\n\n\n\n\n\n\n\nAdaptação Principal\n\n\n\nA ANOVA de Welch remove a suposição de homogeneidade de variâncias.\nCada grupo utiliza sua própria variância\n\nObservações são ponderadas pela precisão do grupo"
+  },
+  {
+    "objectID": "index.html#pesos-dos-grupos",
+    "href": "index.html#pesos-dos-grupos",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Pesos dos Grupos",
+    "text": "Pesos dos Grupos\n\n\n\n\n\n\n\nPeso de Cada Grupo\n\n\n\\[\nw_i=\n\\frac{n_i}{s_i^2}\n\\] Grupos com menor variância recebem maior peso."
+  },
+  {
+    "objectID": "index.html#média-global-ponderada",
+    "href": "index.html#média-global-ponderada",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Média Global Ponderada",
+    "text": "Média Global Ponderada\n\n\n\n\n\n\n\nMédia Ponderada\n\n\n\\[\n\\bar X_w=\n\\frac{\n\\sum_{i=1}^{k} w_i\\bar X_i\n}{\n\\sum_{i=1}^{k} w_i\n}\n\\]"
+  },
+  {
+    "objectID": "index.html#estatística-de-welch",
+    "href": "index.html#estatística-de-welch",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Estatística de Welch",
+    "text": "Estatística de Welch\n\n\n\n\n\n\n\nEstatística de Teste\n\n\n\\[\nF_W=\n\\frac{\n\\frac{1}{k-1}\n\\sum_{i=1}^{k}\nw_i(\\bar X_i-\\bar X_w)^2\n}{\n1+\n\\frac{2(k-2)}{k^2-1}\n\\sum_{i=1}^{k}\n\\frac{1}{n_i-1}\n\\left(\n1-\\frac{w_i}{\\sum w_i}\n\\right)^2\n}\n\\]"
+  },
+  {
+    "objectID": "index.html#graus-de-liberdade-ajustados",
+    "href": "index.html#graus-de-liberdade-ajustados",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Graus de Liberdade Ajustados",
+    "text": "Graus de Liberdade Ajustados\n\n\n\n\n\n\n\nAproximação de Satterthwaite\n\n\n\\[\n\\nu \\approx\n\\frac{\nk^2-1\n}{\n3\n\\sum_{i=1}^{k}\n\\frac{1}{n_i-1}\n\\left(\n1-\\frac{w_i}{\\sum w_i}\n\\right)^2\n}\n\\]"
+  },
+  {
+    "objectID": "index.html#lógica-estatística-da-welch",
+    "href": "index.html#lógica-estatística-da-welch",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Lógica Estatística da Welch",
+    "text": "Lógica Estatística da Welch\n\n\n\n\n\n\n\nPor Que Funciona?\n\n\n\nNão assume variância comum\n\nPondera grupos por precisão\n\nAjusta os graus de liberdade\n\nAproxima melhor a distribuição do teste sob heterocedasticidade"
+  },
+  {
+    "objectID": "index.html#o-que-muda-em-relação-ao-tukey",
+    "href": "index.html#o-que-muda-em-relação-ao-tukey",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "O que Muda em Relação ao Tukey?",
+    "text": "O que Muda em Relação ao Tukey?\n\n\n\n\n\n\n\nPrincipais Diferenças\n\n\nO teste de Games–Howell:\n\nNão assume variâncias iguais\n\nNão assume tamanhos amostrais iguais"
+  },
+  {
+    "objectID": "index.html#estatística-do-teste",
+    "href": "index.html#estatística-do-teste",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Estatística do Teste",
+    "text": "Estatística do Teste\n\n\n\n\n\n\n\nEstatística Games–Howell\n\n\n\\[\nq_{ij}=\n\\frac{\n|\\bar X_i-\\bar X_j|\n}{\n\\sqrt{\n\\frac{s_i^2}{n_i}\n+\n\\frac{s_j^2}{n_j}\n}\n}\n\\]"
+  },
+  {
+    "objectID": "index.html#graus-de-liberdade-ajustados-1",
+    "href": "index.html#graus-de-liberdade-ajustados-1",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Graus de Liberdade Ajustados",
+    "text": "Graus de Liberdade Ajustados\n\n\n\n\n\n\n\nWelch–Satterthwaite\n\n\n\\[\n\\nu_{ij}=\n\\frac{\n\\left(\n\\frac{s_i^2}{n_i}\n+\n\\frac{s_j^2}{n_j}\n\\right)^2\n}{\n\\frac{\n\\left(\n\\frac{s_i^2}{n_i}\n\\right)^2\n}{n_i-1}\n+\n\\frac{\n\\left(\n\\frac{s_j^2}{n_j}\n\\right)^2\n}{n_j-1}\n}\n\\]"
+  },
+  {
+    "objectID": "index.html#lógica-estatística",
+    "href": "index.html#lógica-estatística",
+    "title": "ATIVIDADE AVALIATIVA 5: ANOVA de Welch",
+    "section": "Lógica Estatística",
+    "text": "Lógica Estatística\n\n\n\n\n\n\n\nInterpretação\n\n\nCada comparação entre pares usa:\n\nErro padrão próprio\n\nVariâncias específicas dos grupos\n\nGraus de liberdade ajustados Assim, o teste controla melhor o erro tipo I sob heterocedasticidade."
+  }
+]
