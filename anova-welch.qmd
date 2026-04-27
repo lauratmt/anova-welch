@@ -1,0 +1,259 @@
+---
+title: "ATIVIDADE AVALIATIVA 5: ANOVA de Welch"
+subtitle: "Dupla 8: Laura Monteiro e Felipe Ceacero"
+format:
+  revealjs:
+    theme:
+      - solarized
+      - styles.scss
+    slide-number: true
+    transition: fade
+    center: true
+---
+
+# CONTEXTO
+
+## O que a ANOVA Clássica Testa?
+
+::: {.callout-tip title="Objetivo"}
+Verificar se as médias populacionais de k grupos são iguais.
+$$
+H_0:\mu_1=\mu_2=\cdots=\mu_k
+$$
+$$
+H_1:\text{Pelo menos uma média difere}
+$$
+:::
+
+## Estatística de Teste da ANOVA
+
+::: {.callout-important title="Estatística F"}
+$$
+F=
+\frac{QM_{Entre}}{QM_{Dentro}}
+$$
+:::
+
+## Suposições da ANOVA Clássica
+
+::: {.callout-tip title="Hipóteses do Modelo"}
+- Independência das observações  
+- Normalidade dos resíduos  
+- Homogeneidade de variâncias
+$$
+\sigma_1^2=\sigma_2^2=\cdots=\sigma_k^2
+$$
+:::
+
+## Onde a Homogeneidade é Utilizada?
+
+::: {.callout-tip title="Variância Residual Pooled"}
+A ANOVA clássica estima uma variância residual comum:
+
+$$
+s_p^2 = QM_{Dentro}
+$$
+Esse estimador só é válido se as variâncias populacionais forem iguais.
+:::
+
+## Problema da Heterogeneidade
+
+::: {.callout-warning title="Quando as variâncias diferem"}
+Se:
+
+$$
+\sigma_i^2 \neq \sigma_j^2
+$$
+
+o denominador do teste F deixa de estimar corretamente a variância residual.
+:::
+
+::: {.callout-warning title="Consequências"}
+- Pode inflar ou reduzir o erro tipo I  
+- Problema piora com tamanhos amostrais desbalanceados 
+:::
+
+## Teste de Tukey
+
+::: {.callout-tip title="Comparações Múltiplas"}
+Utilizado após ANOVA significativa para comparar pares de médias.
+$$
+q=
+\frac{
+|\bar X_i-\bar X_j|
+}{
+\sqrt{
+QM_{Dentro}
+\left(
+\frac1{n_i}+\frac1{n_j}
+\right)/2
+}
+}
+$$
+:::
+# ANOVA DE WELCH
+
+## O que muda?
+
+::: {.callout-tip title="Adaptação Principal"}
+- A ANOVA de Welch remove a suposição de homogeneidade de variâncias.
+- Cada grupo utiliza sua própria variância  
+- Observações são ponderadas pela precisão do grupo  
+:::
+
+## Pesos dos Grupos
+
+::: {.callout-important title="Peso de Cada Grupo"}
+$$
+w_i=
+\frac{n_i}{s_i^2}
+$$
+Grupos com menor variância recebem maior peso.
+:::
+
+## Média Global Ponderada
+
+::: {.callout-tip title="Média Ponderada"}
+$$
+\bar X_w=
+\frac{
+\sum_{i=1}^{k} w_i\bar X_i
+}{
+\sum_{i=1}^{k} w_i
+}
+$$
+:::
+
+## Estatística de Welch
+
+::: {.callout-important title="Estatística de Teste"}
+$$
+F_W=
+\frac{
+\frac{1}{k-1}
+\sum_{i=1}^{k}
+w_i(\bar X_i-\bar X_w)^2
+}{
+1+
+\frac{2(k-2)}{k^2-1}
+\sum_{i=1}^{k}
+\frac{1}{n_i-1}
+\left(
+1-\frac{w_i}{\sum w_i}
+\right)^2
+}
+$$
+:::
+
+## Graus de Liberdade Ajustados
+
+::: {.callout-tip title="Aproximação de Satterthwaite"}
+$$
+\nu \approx
+\frac{
+k^2-1
+}{
+3
+\sum_{i=1}^{k}
+\frac{1}{n_i-1}
+\left(
+1-\frac{w_i}{\sum w_i}
+\right)^2
+}
+$$
+:::
+
+## Lógica Estatística da Welch
+
+::: {.callout-tip title="Por Que Funciona?"}
+- Não assume variância comum  
+- Pondera grupos por precisão  
+- Ajusta os graus de liberdade  
+- Aproxima melhor a distribuição do teste sob heterocedasticidade  
+:::
+
+# TESTE DE GAMES–HOWELL
+
+## O que Muda em Relação ao Tukey?
+
+::: {.callout-tip title="Principais Diferenças"}
+O teste de Games–Howell:
+
+- Não assume variâncias iguais  
+- Não assume tamanhos amostrais iguais  
+:::
+
+## Estatística do Teste
+
+::: {.callout-important title="Estatística Games–Howell"}
+$$
+q_{ij}=
+\frac{
+|\bar X_i-\bar X_j|
+}{
+\sqrt{
+\frac{s_i^2}{n_i}
++
+\frac{s_j^2}{n_j}
+}
+}
+$$
+:::
+
+## Graus de Liberdade Ajustados
+
+::: {.callout-tip title="Welch–Satterthwaite"}
+$$
+\nu_{ij}=
+\frac{
+\left(
+\frac{s_i^2}{n_i}
++
+\frac{s_j^2}{n_j}
+\right)^2
+}{
+\frac{
+\left(
+\frac{s_i^2}{n_i}
+\right)^2
+}{n_i-1}
++
+\frac{
+\left(
+\frac{s_j^2}{n_j}
+\right)^2
+}{n_j-1}
+}
+$$
+:::
+
+## Lógica Estatística
+
+::: {.callout-tip title="Interpretação"}
+Cada comparação entre pares usa:
+
+- Erro padrão próprio  
+- Variâncias específicas dos grupos  
+- Graus de liberdade ajustados
+Assim, o teste controla melhor o erro tipo I sob heterocedasticidade.
+:::
+
+# Conclusão
+
+::: {.callout-important title="Resumo Final"}
+- Welch adapta a ANOVA para variâncias desiguais  
+- Games–Howell adapta Tukey para comparações múltiplas robustas  
+- Ambos preservam melhor o erro tipo I quando há heterocedasticidade  
+:::
+
+# REFERÊNCIAS
+
+::: {.callout-tip title="Referências Bibliográficas"}
+Welch, B. L. (1951). *On the Comparison of Several Mean Values: An Alternative Approach.* Biometrika.
+
+Games, P. A., & Howell, J. F. (1976). *Pairwise Multiple Comparison Procedures with Unequal N's and/or Variances.* Journal of Educational Statistics.
+
+Montgomery, D. C. (2019). *Design and Analysis of Experiments.*
+
+Kutner, M. H. et al. (2005). *Applied Linear Statistical Models.*
+:::
